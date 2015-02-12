@@ -2,6 +2,7 @@ Proyecto final de grado superior -Esteban Sara
 
 
 1.- Importar base de datos joc.sql
+    Nombre BBDD: joc
 
 2.- Web situada en : /Projecte/joc_yii/joc
     Aquí encontraremos el index y en las demás carpetas podrás encontrar las vistas, los controladores, el código js, etc.
