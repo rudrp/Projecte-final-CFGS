@@ -1,1 +1,51 @@
 Proyecto final de grado superior -Esteban Sara
+
+
+1.- Importar base de datos joc.sql
+
+2.- Web situada en : /Projecte/joc_yii/joc
+    Aquí encontraremos el index y en las demás carpetas podrás encontrar las vistas, los controladores, el código js, etc.
+
+3.- PDF explicación del proyecto
+
+4.- Cosas empleadas
+
+  -Yii Framework Modelo-Vista-Controlador  ( Con cruge, hebo)
+    Cruge es para la autentificación de usuarios y control de registros, roles, etc.
+    Hebo es un tema para yii que es responsive y utiliza boostrap (HTML5)
+  -Peerjs
+    Tecnología que implementa WebRTC, comunicación peer-to-peer que utilizamos para realizar el juego.
+    
+  -Para realizar una simulación del juego el usuario debe registrase en la web para que en el menú le salga la opción a
+  iniciar una partida.
+  
+  -Además del juego implementamos un chat y una videollamada para que los usuarios registrados puedan comunicarse, etc.
+  
+  (PHP,HTML5,AJAX,JQuery,Mysql,..)
+    
+    
+    
+    Projecte final de grau superior -Esteban Sara
+
+
+1.- Importar base de dades joc.sql
+
+2.- Web situada en : /Projecte/joc_yii/joc
+Aquí trobarem el index i en les altres carpetes podràs trobar les vistes, els controladors, el codi js, etc.
+
+3.- PDF explicació del projecte
+
+4.- Coses emprades
+
+-Yii *Framework Model-Vista-Controlador ( Amb cruge, hebo)
+Cruge és per a l'autenticació d'usuaris i control de registres, rols, etc.
+Hebo és un tema per yii que és responsive i utilitza boostrap (HTML5)
+-Peerjs
+Tecnologia que implementa WebRTC, comunicació peer-to-peer que utilitzem per realitzar el joc.
+
+-Per realitzar una simulació del joc l'usuari ha de registrés a la web perquè en el menú li surti l'opció a
+iniciar una partida.
+
+-A més del joc implementem un xat i una videollamada perquè els usuaris registrats puguin comunicar-se, etc.
+
+(PHP,HTML5,AJAX,JQuery,Mysql,..)
