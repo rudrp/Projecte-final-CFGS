@@ -4,6 +4,20 @@ Proyecto final de grado superior -Esteban Sara
 1.- Importar base de datos joc.sql
     Nombre BBDD: joc
 
+    Modificar la connexión a la BBDD:
+    Se encuentra en /protected/config/main.php
+    Modifcar la parte del fichero con los datos correspondientes.
+
+
+    'db'=>array(
+    'connectionString' => 'mysql:host=localhost;dbname=test',
+    'emulatePrepare' => true,
+    'username' => $usuario,
+    'password' => $pass,
+    'charset' => 'utf8',
+    ),
+
+
 2.- Web situada en : /Projecte/joc_yii/joc
     Aquí encontraremos el index y en las demás carpetas podrás encontrar las vistas, los controladores, el código js, etc.
 
