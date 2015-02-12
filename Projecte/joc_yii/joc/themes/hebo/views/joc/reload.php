@@ -1,0 +1,85 @@
+<style>
+.btn {
+height: 22px; 
+width: 22px;   
+background-image:url('../img/available.png');
+background-repeat:no-repeat;
+background-color: #fff;
+border:none;
+}
+</style>
+<?php
+$rows2 = Yii::app()->db->createCommand()
+    ->select('username,hash')
+    ->from('cruge_user')
+    ->queryAll();
+
+$limit=3;
+$rowCount = count($rows2);
+$num=0;
+$total_pages = ceil($rowCount/$limit);
+$pagLink = '<div class="pagination">';  
+$pagLink .='<ul>';
+for ($i=0; $i<=$total_pages-1; $i++) {  
+$num=$num+1;
+             $pagLink .= "<li><a href='index?page=".$i."'>".$num."</a></li>";  
+}; 
+echo $pagLink . "</ul></div>";
+
+$page=$_SESSION['page'];
+
+if($page>0){
+  $page=$page*3;
+}
+$rows = Yii::app()->db->createCommand()
+    ->select('username,hash')
+    ->from('cruge_user')
+    ->limit(3)
+    ->offset($page)
+    ->queryAll();
+
+  
+
+      if (isset(Yii::app()->user->email)){
+			$email = Yii::app()->user->email;
+			$user = Yii::app()->user->um->loadUser($email);
+			$_s = Yii::app()->user->um->findSession($user);
+			
+			
+			$user= $user->username;
+			
+			}else{
+			echo "que fots aqui";
+			}
+      
+      echo "<table class='table table-striped' id='connect_table' border=1 style='width:300px'>
+                <tr>
+                  <td>USUARI</td>
+                  <td>ESTAT</td> 
+                </tr><tr>";
+      foreach ($rows as $key => $valor) {
+      foreach ($valor as $col => $valors) {
+		if($col=='username'){
+		$username=$valors;
+		if($username!=$user){
+		echo "<td><i class='icon-user'>__".$valors."</td>";
+		}
+		}
+		//  $( document ).ready(function() {
+		if($col=='hash'){
+		  if($valors!=""){
+		  if($username!=$user){
+		  //echo "<td><button id='connect' value='\"$valors\"' type='button'>PLAY</button></td>";
+		  echo "<td class='success'><button title='clica per jugar' class='btn' id='connect' onclick='envia_hash(\"$valors\")' type='button'></button></td>";
+		  echo "</tr>";
+		  }
+		}else {
+			echo "<td><img title='desconectat' src='../img/disable.png'></td>";
+			echo "</tr>";
+		}
+		}
+		
+      }
+    }
+    
+?>

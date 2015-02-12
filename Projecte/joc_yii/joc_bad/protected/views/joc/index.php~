@@ -1,0 +1,119 @@
+<!DOCTYPE HTML> 
+<head>
+  <title>Real-time</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <!--<link href="<?php echo Yii::app()->request->baseUrl;?>/css/fancy.css" rel="stylesheet" type="text/css">-->
+  <script src="http://cdn.peerjs.com/0.3/peer.js"></script>
+  <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery.min.js"></script>
+  <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl;?>/dist/peer.min.js"></script>
+</head> 
+
+<style type="text/css">
+  span.hidden{visibility:hidden;}
+  /*#contingut_joc.hidden{visibility:hidden;}*/
+</style>
+
+<?php 
+if (isset(Yii::app()->user->email))
+{
+	$email = Yii::app()->user->email;
+	$user = Yii::app()->user->um->loadUser($email);
+	$_s = Yii::app()->user->um->findSession($user);
+	$my_json = json_encode((array) $user);
+	
+}
+?>
+
+<script type="text/javascript">
+
+ var Data=<?php echo $my_json; ?>;
+ var user=Data["\u0000CActiveRecord\u0000_attributes"].username;
+
+</script>
+
+
+<script src="<?php echo Yii::app()->request->baseUrl;?>/js/joc.js"></script>
+
+ 
+<body> 
+
+<script type="text/javascript">
+    var auto_refresh = setInterval(
+      function ()
+      {
+	$('#load_tweets').load('<?php echo Yii::app()->request->baseUrl;?>/joc/reload').fadeIn("slow");
+      }, 3000); //refresh
+      ;
+</script>
+  
+<div id="load_tweets"><!--CARREGA LA TAULA --></div>
+
+<div id="contingut_joc" class="hidden">
+<div id="actions">
+     <span class="hidden" id="pid"></span><br/>
+
+
+      <!-- Formulari per enviar missatges a l'oponent -->
+      <form id="send">
+	<input type="text" id="text" placeholder="Escriu un missatge...">
+	<input class="button" type="submit" value="envia">
+      </form>
+      <br/>
+      <!-- Abandona la partida -->
+      <button class="button" id="close">Close selected connections</button>
+ </div>
+ 
+  <div class="pure-g">
+      <!-- Video area -->
+      <div class="pure-u-2-3" id="video-container">
+        <video width="200" height="250" position="right" id="their-video" autoplay></video>
+        <video width="200" height="250" position="left" id="my-video" muted="true" autoplay></video>
+      </div>
+
+      <!-- Steps -->
+      <div class="pure-u-1-3">
+	    <!-- Get local audio/video stream -->
+	    <div id="step1">
+	      <div id="step1-error">
+		<!--<a href="#" class="button" id="step1-retry">Try again</a>-->
+	      </div>
+	    </div>
+
+	    <!-- Call in progress -->
+	    <div id="step3">
+	      <!--<p>Currently in call with <span id="their-id">...</span></p>-->
+	      <!--<p><a href="#" class="button" id="end-call">End call</a></p>-->
+	    </div>
+      </div>
+  </div>
+
+  
+  <!-- id que avisa que no hi ha cap connexió establerta -->
+    <div id="wrap">
+      <div id="connections">
+	<span class="filler">NO HI HA CONNEXIONS ENCARA..</span>
+      </div>
+      <div class="clear"></div>
+    </div>
+  <!-- FI DE LES ACCIONS -->
+  
+  
+  <!-- DIV ON ES TROBA EL CANVAS / JOC -->
+  <div id="box" style="background: #fff; font-size: 18px;padding:40px 30px; text-align: center;">
+    <canvas id="gameCanvas" width="400" height="300"></canvas>
+  </div>
+  
+  <!-- VERSIÓ DEL NAVEGADOR UTILITZAT I REQUERIMENTS DE NAVEGADOR -->
+  <div class="warning browser">
+    <div class="important">Your browser version: <span id="browsers"></span><br>
+  Currently <strong>Firefox 22+ and Google Chrome 26.0.1403.0 or above</strong> is required.</strong></div>
+  Status</a><br/>
+
+  
+  <!-- DIV AMB INFO DE L'ESTAT DE LA CONNEXIÓ -->
+  <div class="log" style="color:#FF7500;text-shadow:none;padding:15px;background:#eee"><strong>Connection status</strong>:<br></div>
+</div>
+</div>
+  
+</body> 
+</html> 
